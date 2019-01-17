@@ -26,7 +26,6 @@
 		B21FFC5F178DB92E00C09010 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B21FFC5D178DB92E00C09010 /* InfoPlist.strings */; };
 		B21FFC62178DB92E00C09010 /* RandomTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B21FFC61178DB92E00C09010 /* RandomTests.m */; };
 		B21FFC6D178DBB4700C09010 /* CanvasView.m in Sources */ = {isa = PBXBuildFile; fileRef = B21FFC6C178DBB4700C09010 /* CanvasView.m */; };
-		B296F3F417930178009AEE95 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B296F3F317930177009AEE95 /* libTestFlight.a */; };
 		B296F3F617930235009AEE95 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B296F3F517930235009AEE95 /* libz.dylib */; };
 /* End PBXBuildFile section */
 
@@ -78,7 +77,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B296F3F617930235009AEE95 /* libz.dylib in Frameworks */,
-				B296F3F417930178009AEE95 /* libTestFlight.a in Frameworks */,
 				B21FFC2B178DB92E00C09010 /* UIKit.framework in Frameworks */,
 				B21FFC2D178DB92E00C09010 /* Foundation.framework in Frameworks */,
 				B21FFC2F178DB92E00C09010 /* CoreGraphics.framework in Frameworks */,
@@ -228,6 +226,12 @@
 			attributes = {
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Alben Software";
+				TargetAttributes = {
+					B21FFC26178DB92E00C09010 = {
+						DevelopmentTeam = 388X7HA3JM;
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = B21FFC22178DB92E00C09010 /* Build configuration list for PBXProject "Random" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -450,6 +454,9 @@
 		B21FFC66178DB92E00C09010 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 388X7HA3JM;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Random/Random-Prefix.pch";
 				INFOPLIST_FILE = "Random/Random-Info.plist";
@@ -459,6 +466,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.alben.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -466,6 +474,9 @@
 		B21FFC67178DB92E00C09010 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 388X7HA3JM;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Random/Random-Prefix.pch";
 				INFOPLIST_FILE = "Random/Random-Info.plist";
@@ -475,6 +486,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.alben.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -563,6 +575,9 @@
 		B21FFC6F1792EF8D00C09010 /* AdHoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 388X7HA3JM;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Random/Random-Prefix.pch";
 				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = "ADHOC=1";
@@ -573,6 +588,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.alben.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = AdHoc;
