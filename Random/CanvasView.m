@@ -15,6 +15,7 @@
     NSArray *colors;
     int size;
     int width;
+    int maxTries;
 }
 
 @end
@@ -46,9 +47,10 @@
     values = (int*)calloc(_count, sizeof(int));
     _empty = _count;
 }
--(void)upWithRnd:(double)rnd repeat:(BOOL)repeat
+-(int)upWithRnd:(double)rnd repeat:(BOOL)repeat
 {
     int val = rnd * (rows*cols);
+    int count = 1;
     if (!repeat) {
         int nval = val;
         while (values[nval]) {
@@ -57,11 +59,14 @@
                 nval = 0;
             }
             if (nval == val) break;
+            count++;
         }
         val = nval;
     }
     _empty -= values[val] == 0;
+    maxTries += values[val] > 0;
     values[val]++;
+    return maxTries;
 }
 -(void)reset
 {

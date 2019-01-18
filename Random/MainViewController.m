@@ -12,7 +12,9 @@
     NSTimer *timer;
     char randstate[2048];
     int count;
+    int countSince;
     BOOL running;
+    BOOL resetting;
 }
 
 @end
@@ -25,6 +27,8 @@
 	// Do any additional setup after loading the view, typically from a nib.
     [self initRandomNumberGenerator];
     count = 0;
+    countSince = 0;
+    resetting = NO;
     [_canvas setup];
     [_canvas setNeedsDisplay];
     [self updateDisplay];
@@ -98,10 +102,16 @@
 
 }
 -(void) elapsedCB {
-    [_canvas upWithRnd:((double)random()) / RAND_MAX repeat:_repeatSw.on];
+    countSince = [_canvas upWithRnd:((double)random()) / RAND_MAX repeat:_repeatSw.on];
     [_canvas setNeedsDisplay];
-    [self updateDisplay];
     count++;
+    if (_canvas.empty == 0) {
+        [_btn setTitle:@"Restart" forState:UIControlStateNormal];
+        resetting = YES;
+        running = NO;
+        [timer invalidate];
+    }
+    [self updateDisplay];
 }
 -(void)updateDisplay
 {
@@ -109,17 +119,26 @@
                  count, _canvas.count-_canvas.empty,_canvas.empty];
     _lbl1.text = [NSString stringWithFormat:@"Views %2.2f%% unseen %2.2f%%",
                   100.0*(double)count/_canvas.count, 100.0*(double)_canvas.empty/_canvas.count];
+    _lbl2.text = [NSString stringWithFormat:@"Collisions %d", countSince];
     
 }
 
 - (IBAction)btnAct:(id)sender {
     if (!running) {
-        [self startTimer];
+        if (resetting) {
+            [self rstAction:0];
+//        } else {
+        }
         [_btn setTitle:@"Pause" forState:UIControlStateNormal];
+        [self startTimer];
         running = YES;
     } else {
         [timer invalidate];
-        [_btn setTitle:@"Start" forState:UIControlStateNormal];
+        if (count) {
+            [_btn setTitle:@"Resume" forState:UIControlStateNormal];
+        } else {
+            [_btn setTitle:@"Start" forState:UIControlStateNormal];
+        }
         running = NO;
     }
 }
@@ -128,6 +147,7 @@
     [_canvas reset];
     [_canvas setNeedsDisplay];
     count = 0;
+    countSince = 0;
     [self updateDisplay];
 }
 

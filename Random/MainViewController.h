@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet CanvasView *canvas;
 @property (strong, nonatomic) UIPopoverController *flipsidePopoverController;
 @property (weak, nonatomic) IBOutlet UILabel *lbl;
+@property (weak, nonatomic) IBOutlet UILabel *lbl2;
 @property (weak, nonatomic) IBOutlet UILabel *lbl1;
 @property (weak, nonatomic) IBOutlet UISwitch *repeatSw;
 @property (weak, nonatomic) IBOutlet UIButton *btn;

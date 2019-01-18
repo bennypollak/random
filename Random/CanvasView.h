@@ -10,7 +10,7 @@
 
 @interface CanvasView : UIView
 -(void)setup;
--(void)upWithRnd:(double)rnd repeat:(BOOL)repeat;
+-(int)upWithRnd:(double)rnd repeat:(BOOL)repeat;
 @property int empty;
 @property int count;
 -(void)reset;
